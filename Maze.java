@@ -11,9 +11,9 @@ public class Maze{
 
   public static void main(String[]args){
     try{
-      Maze m1 = new Maze("Maze2.txt");
+      Maze m1 = new Maze("Maze1.txt");
       //m1.setAnimate(true);
-      m1.solve(1, 1);
+      m1.solve(7, 1);
       //System.out.println(m1.movesToString());
       System.out.println(m1);
       //int[] s = m1.findS();
@@ -39,13 +39,13 @@ public class Maze{
     animate = false;
   }
 
-  private int solve(int r, int c){
-    if (maze[r][c] == 'E') return -1;
+  private boolean solve(int r, int c){
+    boolean solved = false;
+    if (maze[r][c] == 'E') return true;
     if (maze[r][c] == ' ' || maze[r][c] == 'S'){
       maze[r][c] = '@';
       for (int idx = 0; idx < moves.length; idx ++){
-        int ans = solve(r + moves[idx][0], c + moves[idx][1]);
-        return ans;
+        if (solve(r + moves[idx][0], c + moves[idx][1])) return true;;
       }
       maze[r][c] = '.';
     }
@@ -54,7 +54,7 @@ public class Maze{
       System.out.println(this);
       wait(20);
     }
-    return -1;
+    return false;
   }
 
   public int[] findS(){
