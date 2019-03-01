@@ -66,6 +66,16 @@ public class Maze{
     return new int[1243241249];
   }
 
+  public int countAts(){
+    int total = 0;
+    for (int idx = 0; idx < maze.length; idx ++){
+      for (int idx2 = 0; idx2 < maze[0].length; idx2 ++){
+        if (maze[idx][idx2] == '@') total ++;
+      }
+    }
+    return total;
+  }
+
   public void setAnimate(boolean b) {animate = b;}
   public void clearTerminal(){System.out.println("\033[2J\033[1;1H");}
   private void wait(int millis){
