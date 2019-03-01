@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.*;
 public class Maze{
   private char[][] maze;
   private ArrayList<String> lines;
@@ -10,8 +11,10 @@ public class Maze{
 
   public static void main(String[]args){
     try{
-      Maze m1 = new Maze("Maze1.txt");
-      m1.solve(7, 1);
+      Maze m1 = new Maze("Maze2.txt");
+      //m1.setAnimate(true);
+      //m1.solve(5, 1);
+      System.out.println(m1.movesToString());
       System.out.println(m1);
       //int[] s = m1.findS();
       //System.out.println(s[0] + " " + s[1]);
@@ -41,9 +44,15 @@ public class Maze{
     if (maze[r][c] == ' ' || maze[r][c] == 'S'){
       maze[r][c] = '@';
       for (int idx = 0; idx < moves.length; idx ++){
-        return solve(r + moves[idx][0], c + moves[idx][1]);
+        int ans = solve(r + moves[idx][0], c + moves[idx][1]);
+        return ans;
       }
       maze[r][c] = '.';
+    }
+    if (animate){
+      clearTerminal();
+      System.out.println(this);
+      wait(20);
     }
     return -1;
   }
@@ -58,6 +67,22 @@ public class Maze{
   }
 
   public void setAnimate(boolean b) {animate = b;}
+  public void clearTerminal(){System.out.println("\033[2J\033[1;1H");}
+  private void wait(int millis){
+     try {Thread.sleep(millis);}
+     catch (InterruptedException e) {}
+  }
+
+  public String movesToString(){
+    String output = "[[";
+      for (int idx = 0; idx < moves.length; idx ++){
+        for (int idx2 = 0; idx2 < moves[0].length; idx2 ++){
+          output += maze[idx][idx2] + ", ";
+        }
+        output = output.substring(0, output.length() - 2) + "], [";
+      }
+      return output.substring(0, output.length() - 3) + "]";
+    }
 
   public String toString(){
     String output = "";
