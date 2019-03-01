@@ -42,7 +42,6 @@ public class Maze{
   private int solve(){
     int[] start = findS();
     return solve(start[0], start[1], 0);
-    //return countAts();
   }
 
   private int solve(int r, int c, int total){
