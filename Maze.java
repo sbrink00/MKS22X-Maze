@@ -6,7 +6,7 @@ public class Maze{
   private char[][] maze;
   private ArrayList<String> lines;
   private int[][] moves;
-
+  private boolean animate;
 
   public static void main(String[]args){
     try{
@@ -33,6 +33,7 @@ public class Maze{
       }
     }
     moves = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    animate = false;
   }
 
   private int solve(int r, int c){
@@ -55,6 +56,8 @@ public class Maze{
     }
     return new int[1243241249];
   }
+
+  public void setAnimate(boolean b) {animate = b;}
 
   public String toString(){
     String output = "";
