@@ -11,7 +11,7 @@ public class Maze{
 
   public static void main(String[]args){
     try{
-      Maze m1 = new Maze("Maze2.txt");
+      Maze m1 = new Maze("Maze1.txt");
       //m1.setAnimate(true);
       System.out.println(m1.solve());
       //System.out.println(m1.movesToString());
@@ -50,7 +50,8 @@ public class Maze{
     if (maze[r][c] == ' ' || maze[r][c] == 'S'){
       maze[r][c] = '@';
       for (int idx = 0; idx < moves.length; idx ++){
-        if (solve(r + moves[idx][0], c + moves[idx][1], total + 1) != -1) return total;
+        int output = solve(r + moves[idx][0], c + moves[idx][1], total + 1);
+        if (output != -1) return output;
       }
       maze[r][c] = '.';
     }
