@@ -13,8 +13,8 @@ public class Maze{
     try{
       Maze m1 = new Maze("Maze2.txt");
       //m1.setAnimate(true);
-      //m1.solve(5, 1);
-      System.out.println(m1.movesToString());
+      m1.solve(1, 1);
+      //System.out.println(m1.movesToString());
       System.out.println(m1);
       //int[] s = m1.findS();
       //System.out.println(s[0] + " " + s[1]);
@@ -77,7 +77,7 @@ public class Maze{
     String output = "[[";
       for (int idx = 0; idx < moves.length; idx ++){
         for (int idx2 = 0; idx2 < moves[0].length; idx2 ++){
-          output += maze[idx][idx2] + ", ";
+          output += moves[idx][idx2] + ", ";
         }
         output = output.substring(0, output.length() - 2) + "], [";
       }
