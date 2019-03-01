@@ -13,7 +13,7 @@ public class Maze{
     try{
       Maze m1 = new Maze("Maze1.txt");
       //m1.setAnimate(true);
-      m1.solve(7, 1);
+      System.out.println(m1.solve());
       //System.out.println(m1.movesToString());
       System.out.println(m1);
       //int[] s = m1.findS();
@@ -37,6 +37,12 @@ public class Maze{
     }
     moves = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     animate = false;
+  }
+
+  private int solve(){
+    int[] start = findS();
+    solve(start[0], start[1]);
+    return countAts();
   }
 
   private boolean solve(int r, int c){
