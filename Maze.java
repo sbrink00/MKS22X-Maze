@@ -11,7 +11,7 @@ public class Maze{
 
   public static void main(String[]args){
     try{
-      Maze m1 = new Maze("Maze1.txt");
+      Maze m1 = new Maze("Maze4.txt");
       //m1.setAnimate(true);
       System.out.println(m1.solve());
       //System.out.println(m1.movesToString());
@@ -39,7 +39,7 @@ public class Maze{
     animate = false;
   }
 
-  private int solve(){
+  public int solve(){
     int[] start = findS();
     return solve(start[0], start[1], 0);
   }
